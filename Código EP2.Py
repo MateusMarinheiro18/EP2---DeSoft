@@ -1,4 +1,4 @@
-'''def define_posicoes(linha, coluna, orientacao, tamanho):
+def define_posicoes(linha, coluna, orientacao, tamanho):
     posições = []
     if orientacao == "horizontal":
         coluna -= 1
@@ -45,8 +45,6 @@ def posiciona_frota(frota):
     
     return tabuleiro
 
-'''
-
 def afundados(frota, tabuleiro):
     derrubados = 0
     for navios in frota.values():
@@ -62,4 +60,3 @@ def afundados(frota, tabuleiro):
                 derrubados += 1
     
     return derrubados
-
