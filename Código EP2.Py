@@ -25,12 +25,11 @@ def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
         frota[nome_navio] = posição
     return frota 
 
-frota = {}
-nome_navio = 'navio-tanque'
-linha = 6
-coluna = 1
-orientacao = 'horizontal'
-tamanho = 3
+def faz_jogada(tabuleiro, linha, coluna):
+    chute = tabuleiro[linha][coluna]
+    if chute == 1:
+        tabuleiro[linha][coluna] = 'X'
+    else:
+        tabuleiro[linha][coluna] = '-'
 
-resultado = preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho)
-print(resultado)
+    return tabuleiro
