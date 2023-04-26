@@ -15,7 +15,7 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
     return posições
 
-'''def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
+def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
 
     posição = [define_posicoes(linha, coluna, orientacao, tamanho)]
 
@@ -59,7 +59,7 @@ def afundados(frota, tabuleiro):
             if x == tamanho:
                 derrubados += 1
     
-    return derrubados'''
+    return derrubados
 
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
@@ -80,3 +80,5 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
         if lugar in posicoes_ocupadas:
             return False
     return True
+
+    
