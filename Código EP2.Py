@@ -15,7 +15,7 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
     return posições
 
-def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
+'''def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
 
     posição = [define_posicoes(linha, coluna, orientacao, tamanho)]
 
@@ -59,4 +59,24 @@ def afundados(frota, tabuleiro):
             if x == tamanho:
                 derrubados += 1
     
-    return derrubados
+    return derrubados'''
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+
+    posicoes_ocupadas = []
+    
+
+    for navios in frota.values():
+        for lista1 in navios:
+            for posicao in lista1:
+                posicoes_ocupadas.append(posicao)
+    
+    for lugar in posicoes:
+        linha1 = lugar[0]
+        coluna1 = lugar[1]
+        if linha1 > 9 or linha1 < 0 or coluna1 > 9 or coluna1 < 0:
+            return False
+        if lugar in posicoes_ocupadas:
+            return False
+    return True
