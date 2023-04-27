@@ -101,27 +101,31 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
 # Jogo:
 
 tamanhos = {
-    "porta-aviões": 4,
-    "navio-tanque": 3,
-    "contratorpedeiro": 2,
-    "submarino": 1,
+    "porta-aviões":     [4, 1],
+    "navio-tanque":     [3, 2],
+    "contratorpedeiro": [2, 3],
+    "submarino":        [1, 4],
 }
 
 frota = {
-    "porta-aviões":[[]],
-    "navio-tanque":[[],[]],
-    "contratorpedeiro":[[],[],[]],
-    "submarino": [[],[],[],[]],
+    "porta-aviões":[],
+    "navio-tanque":[],
+    "contratorpedeiro":[],
+    "submarino": [],
 }
 
 for embarcação in frota:
-    posicoes = frota[embarcação]
-    for p in posicoes:
-        print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(embarcação, tamanhos[embarcação]))
+    for p in range(tamanhos[embarcação][1]):
+        print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(embarcação, tamanhos[embarcação][0]))
         linha = input('Linha: ')
         coluna = input('Coluna: ')
         if p != 'submarino':
             orientação = input('[1] Vertical [2] Horizontal >')
-            frota[embarcação] = define_posicoes(linha, coluna, orientação, tamanhos[embarcação])
+            if posicao_valida(frota, linha, coluna, orientação, tamanhos[embarcação][0]) == True:
+                frota[embarcação] = define_posicoes(linha, coluna, orientação, tamanhos[embarcação][0])
+            else:
+                print("Esta posição não está válida!")
         else:
             frota[embarcação] = [linha, coluna]
+
+print(frota) 
