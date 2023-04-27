@@ -121,11 +121,12 @@ for embarcação in frota:
         coluna = input('Coluna: ')
         if p != 'submarino':
             orientação = input('[1] Vertical [2] Horizontal >')
-            if posicao_valida(frota, linha, coluna, orientação, tamanhos[embarcação][0]) == True:
-                frota[embarcação] = define_posicoes(linha, coluna, orientação, tamanhos[embarcação][0])
-            else:
-                print("Esta posição não está válida!")
         else:
-            frota[embarcação] = [linha, coluna]
+            orientação = 
+        posicao = define_posicoes(linha, coluna, orientação, tamanhos[embarcação][0])
+        if posicao_valida(frota, linha, coluna, orientação, tamanhos[embarcação][0]) == True:
+            frota = preenche_frota(frota, embarcação, linha, coluna, orientação, tamanhos[embarcação][0])
+        else:
+            print("Esta posição não está válida!")
 
 print(frota) 
