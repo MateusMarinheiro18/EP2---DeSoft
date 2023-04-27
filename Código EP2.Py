@@ -177,8 +177,11 @@ jogando = True
 
 while jogando:
 
-    tabuleiro = (tabuleiro_jogador, tabuleiro_oponente)
+    # Monta tabuleiro:
+    tabuleiro_jogo = monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente)
+    print(tabuleiro_jogo)
 
+    # Insere coordenadas do ataque:
     bol_1 = True
     while bol_1:
         linha_ataque = int(input('Qual linha deseja atacar? '))
@@ -196,12 +199,20 @@ while jogando:
             bol_2 = False 
 
     posicao_ataque = [linha_ataque, coluna_ataque]
-    
+
+    # Confere se a coordenanda de ataque informada já foi informada:
     if posicao_ataque in posicoes_ataque_informadas:
+
+        posicoes_ataque_informadas.append(posicao_ataque)
         print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha_ataque, coluna_ataque))
+    
+    # Caso o ataque seja válido, atualiza o tabuleiro:
     else:
+
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
         embarcacoes_afundadas = afundados(frota_oponente, tabuleiro_oponente)
+
+        # Confere se o jogador ganhou
         if embarcacoes_afundadas == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             jogando = False
