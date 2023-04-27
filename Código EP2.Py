@@ -108,9 +108,11 @@ frota = {
 }
 
 for embarcacao in frota:
-    on = True
-    tamanho = len(frota) - frota.index(embarcacao)
-    while on:
+    lista_embarcacoes = list(frota.keys())
+    tamanho = len(frota) - lista_embarcacoes.index(embarcacao)
+    n_embarcacoes = lista_embarcacoes.index(embarcacao) + 1
+    n = 0 
+    while n <= n_embarcacoes:
         print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(embarcacao, tamanho))
         linha  = input('Linha: ')
         coluna = input('Coluna: ')
@@ -119,7 +121,8 @@ for embarcacao in frota:
         else:
             orientacao = input('[1] Vertical [2] Horizontal >')
         if posicao_valida(frota, linha, coluna, orientacao, tamanho) == True:
-            on = False
+            n += 1 
         else:
             print('Esta posição não está válida!')
+    frota = preenche_frota(frota, embarcacao, linha, coluna, orientacao, tamanho)
     
