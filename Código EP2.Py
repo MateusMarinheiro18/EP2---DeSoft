@@ -1,5 +1,7 @@
 ################################################################################################
 
+import random 
+
 # Funções do jogo:
 
 def define_posicoes(linha, coluna, orientacao, tamanho):
@@ -172,6 +174,7 @@ tabuleiro_oponente = posiciona_frota(frota_oponente)
 tabuleiro_jogador = posiciona_frota(frota_jogador)
 
 posicoes_ataque_informadas = []
+posicoes_defesa_sorteadas = []
 
 jogando = True
 
@@ -216,3 +219,17 @@ while jogando:
         if embarcacoes_afundadas == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             jogando = False
+        else:
+            jogada_oponente = True 
+            while jogada_oponente:
+                linha_defesa = random.randint(0,9)
+                coluna_defesa = random.randint(0,9)
+                posicao_defesa = [linha_defesa, coluna_defesa]
+                if posicao_defesa not in posicoes_defesa_sorteadas:
+                    jogada_oponente = False
+            print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_defesa, coluna_defesa))
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_defesa, coluna_defesa)
+            embarcacoes_afundadas_jogador = afundados(frota_jogador, tabuleiro_jogador)
+            if embarcacoes_afundadas_jogador == 10:
+                print('Xi! O oponente derrubou toda a sua frota =(')
+                jogando = False
