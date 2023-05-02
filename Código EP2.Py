@@ -215,21 +215,28 @@ while jogando:
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
         embarcacoes_afundadas = afundados(frota_oponente, tabuleiro_oponente)
 
-        # Confere se o jogador ganhou
+        # Confere se o jogador ganhou:
         if embarcacoes_afundadas == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             jogando = False
         else:
-            jogada_oponente = True 
-            while jogada_oponente:
+            # Realiza jogadas do oponente:
+            bol_3 = True 
+            while bol_3:
                 linha_defesa = random.randint(0,9)
                 coluna_defesa = random.randint(0,9)
                 posicao_defesa = [linha_defesa, coluna_defesa]
                 if posicao_defesa not in posicoes_defesa_sorteadas:
-                    jogada_oponente = False
+                    posicoes_defesa_sorteadas.append(posicao_defesa)
+                    bol_3 = False
+                                    
             print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_defesa, coluna_defesa))
+
+            # Atualiza tabuleiro do jogador:
             tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_defesa, coluna_defesa)
             embarcacoes_afundadas_jogador = afundados(frota_jogador, tabuleiro_jogador)
+
+            # Confere se o oponente ganhou o jogo:
             if embarcacoes_afundadas_jogador == 10:
                 print('Xi! O oponente derrubou toda a sua frota =(')
                 jogando = False
