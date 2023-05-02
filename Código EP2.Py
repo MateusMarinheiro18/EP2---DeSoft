@@ -229,7 +229,7 @@ while jogando:
                 if posicao_defesa not in posicoes_defesa_sorteadas:
                     posicoes_defesa_sorteadas.append(posicao_defesa)
                     bol_3 = False
-                                    
+
             print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_defesa, coluna_defesa))
 
             # Atualiza tabuleiro do jogador:
@@ -239,4 +239,4 @@ while jogando:
             # Confere se o oponente ganhou o jogo:
             if embarcacoes_afundadas_jogador == 10:
                 print('Xi! O oponente derrubou toda a sua frota =(')
-                jogando = False
+                jogando = False 
